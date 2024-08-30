@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Nerko+One&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.title {
+    margin: 3rem;
+    color: #601155c0;
+    font-size: 2.5rem;
+    font-family: "Nerko One", cursive;
+    letter-spacing: 4px;
+}
+
+.container .hands {
+    width: 100%;
+    display: flex;
+    height: 200px;
+    justify-content: center;
+}
+
+.hands img{
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+}
+
+.hands img:hover {
+    width: 220px;
+    height: 220px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 85.9vh;
+    background-color: #601155c0;
+}
+
+.container .make-move {
+    font-size: 2.5rem;
+    color: white;
+    font-family: "Indie Flower", cursive;
+    letter-spacing: 1px;
+    margin-bottom: 2.5rem;
+}
+
+.container .choice {
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+.container .choices {
+    display: flex;
+}
+
+.container .choices h3 {
+    margin: 3rem 5rem;
+    font-size: 2rem;
+    color: white;
+    font-family: "Indie Flower", cursive;
+}
+
+.container .points {
+    display: flex;
+}
+
+.container .points h2 {
+    margin: 0 3rem;
+    font-size: 5rem;
+    color: white;
+    font-family: "Indie Flower", cursive;
+}
+
+.container .result .winner {
+    margin: 2rem 0;
+    font-size: 5rem;
+    color: #35b365;
+    font-family: "Nerko One", cursive;
+    letter-spacing: 4px;
+    height: 100px;
+}
+
