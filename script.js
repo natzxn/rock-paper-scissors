@@ -12,17 +12,57 @@ const computerPoints = document.querySelector('.computers-points');
 
 const choices = ['rock', 'paper', 'scissors']
 
+let playerScore = 0;
+let computerScore = 0;
+
 //computer choice function
 const computerRandom = () => {
     const number = Math.floor(Math.random() * choices.length);
     return choices[number];
 }
 
+const determineResult = (playerChoice, computerChoice) => {
+    if (playerChoice === computerChoice) {
+        return 'TIE';
+    }
+    
+    switch (playerChoice) {
+        case 'rock':
+            return (computerChoice === 'scissors') ? 'WIN' : 'LOSE';
+        case 'paper':
+            return (computerChoice === 'rock') ? 'WIN' : 'LOSE';
+        case 'scissors':
+            return (computerChoice === 'paper') ? 'WIN' : 'LOSE';
+        default:
+            return 'TIE';
+    }
+};
+
+const updateGameResult = (result) => {
+    switch (result) {
+        case 'TIE':
+            winner.textContent = "IT'S A TIE";
+            winner.style.color = '#82caff';
+            break;
+        case 'WIN':
+            winner.textContent = "YOU WIN";
+            winner.style.color = '#35b365';
+            playerScore++;
+            humanPoints.textContent = `${playerScore}`;
+            break;
+        case 'LOSE':
+            winner.textContent = "YOU LOSE";
+            winner.style.color = '#DE0A26';
+            computerScore++;
+            computerPoints.textContent = `${computerScore}`;
+            break;
+    }
+};
+
 
 const handleChoice  = (event) => {
     const playerChoice = event.currentTarget.id;
-    let playerScore = 0;
-    let computerScore = 0;
+
 
     if (playerChoice === 'rock') {
         playerOption.textContent = 'rock';
@@ -35,34 +75,9 @@ const handleChoice  = (event) => {
     const computerChoice = computerRandom();
     computerOption.textContent = `${computerChoice}`;
 
-    if (playerChoice === computerChoice) {
-        winner.textContent = "IT'S A TIE";
-        winner.style.color = '#82caff'
-    } else if (playerChoice === 'rock' && computerChoice === 'paper') {
-        winner.textContent = "YOU LOSE";
-        winner.style.color = '#DE0A26'
-        computerScore++;
-        computerPoints.textContent = `${computerScore}`
-    } else if (playerChoice === 'paper' && computerChoice === 'rock') {
-        winner.textContent = "YOU WIN";
-        winner.style.color = '#35b365'
-    } else if (playerChoice === 'scissors' && computerChoice === 'paper') {
-        winner.textContent = "YOU WIN";
-        winner.style.color = '#35b365'
-    } else if (playerChoice === 'paper' && computerChoice === 'scissors') {
-        winner.textContent = "YOU LOSE";
-        winner.style.color = '#DE0A26'
-        computerScore++;
-        computerPoints.textContent = `${computerScore}`
-    } else if (playerChoice === 'rock' && computerChoice === 'scissors') {
-        winner.textContent = "YOU WIN";
-        winner.style.color = '#35b365'
-    } else if (playerChoice === 'scissors' && computerChoice === 'rock') {
-        winner.textContent = "YOU LOSE";
-        winner.style.color = '#DE0A26'
-        computerScore++;
-        computerPoints.textContent = `${computerScore++}`
-    }
+
+    const result = determineResult(playerChoice, computerChoice);
+    updateGameResult(result);
 }
 
 
