@@ -1,4 +1,3 @@
-//
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
@@ -21,6 +20,7 @@ const computerRandom = () => {
     return choices[number];
 }
 
+//Who wins funcion
 const determineResult = (playerChoice, computerChoice) => {
     if (playerChoice === computerChoice) {
         return 'TIE';
@@ -38,6 +38,7 @@ const determineResult = (playerChoice, computerChoice) => {
     }
 };
 
+//Updating result function
 const updateGameResult = (result) => {
     switch (result) {
         case 'TIE':
@@ -59,7 +60,7 @@ const updateGameResult = (result) => {
     }
 };
 
-
+//final function with handles all the choices
 const handleChoice  = (event) => {
     const playerChoice = event.currentTarget.id;
 
@@ -80,10 +81,6 @@ const handleChoice  = (event) => {
     updateGameResult(result);
 }
 
-
-
-
-//listenery
 rock.addEventListener('click', handleChoice)
 paper.addEventListener('click', handleChoice)
 scissors.addEventListener('click', handleChoice)
